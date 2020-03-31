@@ -8,6 +8,11 @@
       "android"
     ]
   },
+  "engines": {
+    "cordovaDependencies": {
+      "0.0.1": { "cordova-android": ">=8.0.0"}
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tzachari/cordova-plugin-contacttracing.git"
@@ -28,5 +33,12 @@
   "bugs": {
     "url": "https://github.com/tzachari/cordova-plugin-contacttracing/issues"
   },
-  "homepage": "https://github.com/tzachari/cordova-plugin-contacttracing#readme"
+  "homepage": "https://github.com/tzachari/cordova-plugin-contacttracing#readme",
+  "dependencies": {
+    "cordova-support-kotlin": "^1.2.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "xml2js": "^0.4.23"
+  }
 }

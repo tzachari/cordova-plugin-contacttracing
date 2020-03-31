@@ -14,7 +14,7 @@
     <clobbers target="contacttracing" />
   </js-module>
 
-  <platform name="android">
+  <platform name="android" kotlin="1.3.0">
 
     <config-file target="res/xml/config.xml" parent="/widget">
       <feature name="ContactTracing">
@@ -28,13 +28,18 @@
       <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     </config-file>
 
-    <source-file src="src/android/UUIDUtil.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/CENScanner.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/CENHandler.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/CENGenerator.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/CENAdvertiser.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/CEN.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
-    <source-file src="src/android/ContactTracing.kt" target-dir="src/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/UUIDUtil.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/CENScanner.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/CENHandler.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/CENGenerator.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/CENAdvertiser.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/CEN.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+    <source-file src="src/android/ContactTracing.kt" target-dir="app/src/main/java/org/covidwatch/libcontacttracing"/>
+
+    <dependency id="cordova-support-kotlin" version="^1.2.1"/>
+    <framework src="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0" />
+    <apply-plugin>kotlin-android-extensions</apply-plugin>
+    <apply-plugin>kotlin-kapt</apply-plugin>
 
   </platform>
 
