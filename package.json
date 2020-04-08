@@ -36,14 +36,24 @@
       "version": ">=26"
     },
     {
+      "name": "cordova-ios",
+      "version": ">=5.0.0"
+    },
+    {
       "name": "apple-ios",
       "version": ">=10.0.0"
     }
   ],
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "xml2js": "^0.4.23"
+  },
   "author": "Thomas Zachariah",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/covid19database/phone-app/issues"
+    "url": "https://github.com/tzachari/cordova-plugin-contacttracing/issues"
   },
-  "homepage": "https://github.com/covid19database/phone-app"
+  "homepage": "https://github.com/tzachari/cordova-plugin-contacttracing"
 }
