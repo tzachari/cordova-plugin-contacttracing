@@ -58,6 +58,7 @@
     </config-file>
 
     <framework src="CoreBluetooth.framework" />
+    <framework src="tcn-client-ios" type="podspec" spec="~> 0.4.1" />
 
     <preference name="BLUETOOTH_USAGE_DESCRIPTION" default="Keeps track of anonymized contact events to assess risk. Performs best when location tracking is set to 'Always Allow'." />
     <config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
@@ -74,14 +75,6 @@
     </config-file>
 
     <source-file src="src/ios/ContactTracing.swift" target-dir="ContactTracing"/>
-    <source-file src="src/ios/ContactTracingBluetooth/BluetoothController.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/BluetoothController+ContactEvent.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/BluetoothService.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/BluetoothService+CoreBluetooth.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/CBPeripheral+Additions.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/ContactTracingBluetooth.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/ContactTracingBluetoothService.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
-    <source-file src="src/ios/ContactTracingBluetooth/DistanceEstimation.swift" target-dir="ContactTracing/ContactTracingBluetooth"/>
 
   </platform>
 
