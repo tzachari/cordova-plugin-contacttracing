@@ -30,6 +30,7 @@
 
     <!-- Framework and plugins for Kotlin -->
     <framework src="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71"/>
+    <framework src="src/android/plugin.gradle" custom="true" type="gradleReference"/>
     <apply-plugin>kotlin-android-extensions</apply-plugin>
     <apply-plugin>kotlin-kapt</apply-plugin>
 
