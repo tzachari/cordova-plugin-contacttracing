@@ -58,7 +58,6 @@
     </config-file>
 
     <framework src="CoreBluetooth.framework" />
-    <framework src="tcn-client-ios" type="podspec" spec="~> 0.4.1" />
 
     <preference name="BLUETOOTH_USAGE_DESCRIPTION" default="Keeps track of anonymized contact events to assess risk. Performs best when location tracking is set to 'Always Allow'." />
     <config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
@@ -75,6 +74,26 @@
     </config-file>
 
     <source-file src="src/ios/ContactTracing.swift" target-dir="ContactTracing"/>
+
+    <!-- Use Cordova's built-in pod support when tcn-client-ios published -->
+    <!-- 
+      <framework src="TCNClient" type="podspec" spec="~> 0.4.1" />
+    -->
+
+    <!-- Alternatively, Cordova 9 has built-in support for pods via git  -->
+    <!-- 
+      <podspec>
+        <pods use-frameworks="true">
+          <pod name="TCNClient" git="git@github.com:shankari/tcn-client-ios.git" branch="add_podspec"/>
+        </pods>
+      </podspec>
+    -->
+
+    <!-- For now, temporary solution is to add support through these plugins -->
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    <dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>
+    <pods-config ios-min-version="13.0" use-frameworks="true"/>
+    <pod name="TCNClient" git="git@github.com:shankari/tcn-client-ios.git" branch="add_podspec"/>
 
   </platform>
 
