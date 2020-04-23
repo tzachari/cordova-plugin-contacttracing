@@ -1,7 +1,9 @@
+import TCNClient
+
 @objc(ContactTracing)
 class ContactTracing : CDVPlugin {
 
-    var contactTracingBluetoothService : ContactTracingBluetoothService?
+    var contactTracingBluetoothService : TCNBluetoothService?
     var inMemoryCache : [ [ AnyHashable : Any ] ]?
 
     @objc(start:)
@@ -31,8 +33,8 @@ class ContactTracing : CDVPlugin {
     func configureContactTracingService( callbackId : String ) {
         guard contactTracingBluetoothService == nil else { return }
         self.inMemoryCache = []
-        contactTracingBluetoothService = ContactTracingBluetoothService(
-            cenGenerator: { () -> Data in
+        contactTracingBluetoothService = TCNBluetoothService(
+            tcnGenerator: { () -> Data in
                 NSLog("Bluetooth sharing asked to generate a contact event number to share it")
                 let data = withUnsafeBytes(of: UUID().uuid, { Data($0) })
                 self.inMemoryCache?.append( [
@@ -41,7 +43,7 @@ class ContactTracing : CDVPlugin {
                     "type" : "advertise"
                 ] )
                 return data
-            }, cenFinder: { (data) in
+            }, tcnFinder: { (data) in
                 NSLog("Bluetooth sharing found a contact event number from a nearby device" )
                 self.inMemoryCache?.append( [
                     "number" : data.base64EncodedString(),
