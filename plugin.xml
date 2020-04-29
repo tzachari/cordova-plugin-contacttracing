@@ -42,6 +42,7 @@
       <feature name="ContactTracing">
         <param name="android-package" value="org.tcncoalition.contacttracing.ContactTracing" onload="true"/>
       </feature>
+      <preference name="android-minSdkVersion" value="23" />
     </config-file>
 
     <source-file src="src/android/ContactTracing.kt" target-dir="app/src/main/java/org/tcncoalition/contacttracing"/>
