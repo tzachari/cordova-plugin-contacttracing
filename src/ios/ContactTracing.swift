@@ -5,6 +5,7 @@ class ContactTracing : CDVPlugin {
 
     var contactTracingBluetoothService : TCNBluetoothService?
     var inMemoryCache : [ [ AnyHashable : Any ] ]?
+    var discoveredList : [ Data ]?
 
     @objc(start:)
     func start( _ command : CDVInvokedUrlCommand ) {
@@ -35,21 +36,24 @@ class ContactTracing : CDVPlugin {
         self.inMemoryCache = []
         contactTracingBluetoothService = TCNBluetoothService(
             tcnGenerator: { () -> Data in
-                NSLog("Bluetooth sharing asked to generate a contact event number to share it")
+                NSLog("Bluetooth service asked to generate a temporary contact number to share it")
                 let data = withUnsafeBytes(of: UUID().uuid, { Data($0) })
                 self.inMemoryCache?.append( [
                     "number" : data.base64EncodedString(),
                     "ts" : Date().timeIntervalSince1970 * 1000, // * 1000 to convert sec to ms
                     "type" : "advertise"
                 ] )
+                self.discoveredList = []
                 return data
-            }, tcnFinder: { (data) in
-                NSLog("Bluetooth sharing found a contact event number from a nearby device" )
+            }, tcnFinder: { ( data, estimatedDistance ) in
+                guard let dl = self.discoveredList, !dl.contains( data ) else { return }
+                NSLog("Bluetooth service found a temporary contact number from a nearby device" )
                 self.inMemoryCache?.append( [
                     "number" : data.base64EncodedString(),
                     "ts" : Date().timeIntervalSince1970 * 1000, // * 1000 to convert sec to ms
                     "type" : "scan"
                 ] )
+                self.discoveredList?.append( data )
             }, errorHandler: { ( error ) in
                 self.commandDelegate.send(
                     CDVPluginResult(
